@@ -30,10 +30,10 @@ Bannerbear is a service that exposes design templates as a simple JSON-based API
 
 # Authentication
 
-> To authorize:
+> To test your API key:
 
 ```shell
-curl "https://api.bannerbear/v2/requests"
+curl "https://api.bannerbear/v2/auth"
   -H "Authorization: API_KEY"
 ```
 
@@ -49,14 +49,14 @@ Bannerbear expects the API key to be included in all API requests to the server 
 Replace <code>API_KEY</code> with your project API key.
 </aside>
 
-# Requests
+# Images
 
-## Create a Request
+## Create an Image
 
 > To create a request:
 
 ```shell
-curl "https://api.bannerbear/v2/requests"
+curl "https://api.bannerbear/v2/images"
   -H "Authorization: API_KEY"
   -H "Content-Type: application/json" 
   -d json
@@ -66,9 +66,11 @@ curl "https://api.bannerbear/v2/requests"
 
 ```json
 {
-  "created_at": "2020-02-20T02:58:37.889Z",
+  "created_at": "2020-02-20T07:59:23.077Z",
   "status": "pending",
   "uid": "kG39R5XbvPQpLENKBWJj",
+  "self": "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
+  "template": "6A37YJe5qNDmpvWKP0",
   "modifications": [
     {
       "name": "title",
@@ -76,46 +78,53 @@ curl "https://api.bannerbear/v2/requests"
     },
     {
       "name": "avatar",
-      "image": "https://www.bannerbear.com/images/sample.jpg"
+      "image_url": "https://www.bannerbear.com/assets/sample_avatar.jpg"
     }
   ],
-  "image_url": "",
-  "self": "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
+  "webhook_url": null,
+  "image_url": null
 }
 ```
 
-This endpoint creates a new image request.
+This endpoint creates a new image.
 
 ### HTTP Request
 
-`POST https://api.bannerbear/v2/requests`
+`POST https://api.bannerbear/v2/images`
 
 ### Post Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
 template | string | The template id you want to use
-modifications | array | A list of modifications you want to make
-
+modifications | array | A list of Modifications you want to make
+webhook_url<br /><span class="tag">optional</span> | string | A url to POST the Image object to upon rendering completed
 
 ### Modification Object
 
 Attribute | Type | Description
 --------- | ------- | -----------
-name | string | The name / label of the item you want to change
+name | string | The name of the item you want to change
 text | string | Replacement text you want to use
-image | string | Replacement image url you want to use (must be publicly viewable)
+image_url | string | Replacement image url you want to use (must be publicly viewable)
 
-All requests are created with the status `pending`.
+All images are created with the status `pending`.
 
-Images are usually rendered within a few seconds. You can poll the GET endpoint for status updates. The `self` attribute of the response provides this endpoint.
+Images are usually rendered within a few seconds. 
 
-## Get a Specific Request
+You can poll the GET endpoint for status updates. The `self` attribute of the response provides this endpoint.
 
-> To get a request:
+### Using Webhooks
+
+As a recommended alternative to polling, you can define a webhook in `webhook_url` which Bannerbear will POST the Image object to after image rendering is complete. The rendered image url is found in the `image_url` attribute of the Image object.
+
+
+## Get a Specific Image
+
+> To get an image:
 
 ```shell
-curl "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
+curl "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
   -H "Authorization: API_KEY"
 ```
 
@@ -123,9 +132,11 @@ curl "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
 
 ```json
 {
-  "created_at": "2020-02-20T02:58:37.889Z",
+  "created_at": "2020-02-20T07:59:23.077Z",
   "status": "completed",
   "uid": "kG39R5XbvPQpLENKBWJj",
+  "self": "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
+  "template": "6A37YJe5qNDmpvWKP0",
   "modifications": [
     {
       "name": "title",
@@ -133,11 +144,11 @@ curl "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
     },
     {
       "name": "avatar",
-      "image": "https://www.bannerbear.com/images/sample.jpg"
+      "image_url": "https://www.bannerbear.com/assets/sample_avatar.jpg"
     }
   ],
-  "image_url": "url_to_rendered_image",
-  "self": "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
+  "webhook_url": null,
+  "image_url": "https://cdn.bannerbear.com/...",
 }
 ```
 
