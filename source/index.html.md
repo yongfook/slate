@@ -18,7 +18,7 @@ search: true
 
 Welcome to the Bannerbear API! 
 
-Bannerbear is a service that exposes banner designs as a simple API. 
+Bannerbear is a service that exposes design templates as a simple JSON-based API. 
 
 1. Your designer designs a template in Bannerbear
 2. We turn it into an API
