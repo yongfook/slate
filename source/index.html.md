@@ -28,10 +28,9 @@ Bannerbear is a service that exposes banner designs as a simple API.
 
 # Authentication
 
-> To authorize, use this code:
+> To authorize:
 
 ```shell
-# With shell, you can just pass the correct header with each request
 curl "https://api.bannerbear/v2/requests"
   -H "Authorization: API_KEY"
 ```
@@ -52,6 +51,8 @@ Replace <code>API_KEY</code> with your project API key.
 
 ## Create a Request
 
+> To create a request:
+
 ```shell
 curl "https://api.bannerbear/v2/requests"
   -H "Authorization: API_KEY"
@@ -59,7 +60,7 @@ curl "https://api.bannerbear/v2/requests"
   -d json
 ```
 
-> The above command returns JSON structured like this:
+> The above endpoint returns JSON like this:
 
 ```json
 {
@@ -109,12 +110,14 @@ Images are usually rendered within a few seconds. You can poll the GET endpoint 
 
 ## Get a Specific Request
 
+> To get a request:
+
 ```shell
 curl "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
   -H "Authorization: API_KEY"
 ```
 
-> The above command returns JSON structured like this:
+> The above endpoint returns JSON like this:
 
 ```json
 {
