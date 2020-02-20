@@ -26,7 +26,7 @@ Bannerbear is a service that exposes design templates as a simple JSON-based API
 
 ![](/images/api_example_2.jpg)
 
-*Important: This API is not live yet, it launches on March 2nd :)*
+*Important: This API is not live yet, it launches on March 2nd 2020 :)*
 
 # Authentication
 
