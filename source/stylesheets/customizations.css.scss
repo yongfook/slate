@@ -17,4 +17,7 @@ body {
 		position: fixed;
 		bottom: 0;
 	}
+	.content table th, .content table td {
+		border: 1px solid #CCC;
+	}
 }

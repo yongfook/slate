@@ -3,12 +3,9 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='https://app.bannerbear.com'>Sign up for an API Key</a>
+  - <a href='https://app.bannerbear.com'>Sign up for an API key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -19,221 +16,134 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Bannerbear API! 
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Bannerbear is a service that exposes banner designs as a simple API. 
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+1. Your designer designs a template in Bannerbear
+2. We turn it into an API
+3. You use this API to generate variations of this template design in JPG format
 
 # Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "https://api.bannerbear/v2/requests"
+  -H "Authorization: API_KEY"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `API_KEY` with your API key.
 
-let api = kittn.authorize('meowmeowmeow');
-```
+Bannerbear uses API keys to allow access to the API. You can get an API key by [creating a project](https://app.bannerbear.com) in Bannerbear.
 
-> Make sure to replace `meowmeowmeow` with your API key.
+Bannerbear expects the API key to be included in all API requests to the server in a header that looks like the following:
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+`Authorization: API_KEY`
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Replace <code>API_KEY</code> with your project API key.
 </aside>
 
-## Get a Specific Kitten
+# Requests
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Create a Request
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl "https://api.bannerbear/v2/requests"
+  -H "Authorization: API_KEY"
+  -H "Content-Type: application/json" 
+  -d json
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "created_at": "2020-02-20T02:58:37.889Z",
+  "status": "pending",
+  "uid": "kG39R5XbvPQpLENKBWJj",
+  "modifications": [
+    {
+      "name": "title",
+      "text": "Lorem ipsum dolor sit amed"
+    },
+    {
+      "name": "avatar",
+      "image": "https://www.bannerbear.com/images/sample.jpg"
+    }
+  ],
+  "image_url": "",
+  "self": "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint creates a new image request.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST https://api.bannerbear/v2/requests`
 
-### URL Parameters
+### Post Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Parameter | Type | Description
+--------- | ------- | -----------
+template | string | The template id you want to use
+modifications | array | A list of modifications you want to make
 
-## Delete a Specific Kitten
 
-```ruby
-require 'kittn'
+### Modification Object
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
+Attribute | Type | Description
+--------- | ------- | -----------
+name | string | The name / label of the item you want to change
+text | string | Replacement text you want to use
+image | string | Replacement image url you want to use (must be publicly viewable)
 
-```python
-import kittn
+All requests are created with the status `pending`.
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+Images are usually rendered within a few seconds. You can poll the GET endpoint for status updates. The `self` attribute of the response provides this endpoint.
+
+## Get a Specific Request
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+curl "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
+  -H "Authorization: API_KEY"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "created_at": "2020-02-20T02:58:37.889Z",
+  "status": "completed",
+  "uid": "kG39R5XbvPQpLENKBWJj",
+  "modifications": [
+    {
+      "name": "title",
+      "text": "Lorem ipsum dolor sit amed"
+    },
+    {
+      "name": "avatar",
+      "image": "https://www.bannerbear.com/images/sample.jpg"
+    }
+  ],
+  "image_url": "url_to_rendered_image",
+  "self": "https://api.bannerbear/v2/requests/kG39R5XbvPQpLENKBWJj"
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint retrieves a specific request.
+
+After creating an image request you will receive a uid. You can poll this endpoint to find out when the image has been rendered. When the status is `completed` the image url will be available in `image_url`.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://api.bannerbear/v2/requests/<uid>`
 
-### URL Parameters
+### Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
-
+uid | The uid of the request to retrieve

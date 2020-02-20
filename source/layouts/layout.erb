@@ -58,7 +58,7 @@ under the License.
     </a>
     <div class="toc-wrapper">
       <%= image_tag "api_docs_logo.png", class: 'logo' %>
-      <% if language_tabs.any? %>
+<!--       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
             <% if lang.is_a? Hash %>
@@ -68,7 +68,7 @@ under the License.
             <% end %>
           <% end %>
         </div>
-      <% end %>
+      <% end %> -->
 <!--       <% if current_page.data.search %>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -105,17 +105,8 @@ under the License.
         <%= page_content %>
       </div>
       <div class="dark-box">
-        <% if language_tabs.any? %>
-          <div class="lang-selector">
-            <% language_tabs.each do |lang| %>
-              <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
+        
+        
       </div>
     </div>
   </body>
