@@ -493,7 +493,7 @@ html, body {
   }
 
   aside.success:before {
-    @extend %icon-ok-sign;
+    // @extend %icon-ok-sign;
   }
 
   .search-highlight {
