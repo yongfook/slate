@@ -29,12 +29,22 @@ under the License.
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title><%= current_page.data.title || "API Documentation" %></title>
+    <title><%= current_page.data.title || "Bannerbear API Reference" %></title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
     <link href="/images/icon.png" rel="apple-touch-icon" />
+
+    <meta property='og:type' content="website" />
+    <meta property='og:description' content="Bannerbear is a service that exposes a simple JSON API for manipulating your graphic assets" />
+    <meta property='description' content="Bannerbear is a service that exposes a simple JSON API for manipulating your graphic assets" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property='og:title' content="Bannerbear API Reference" />
+    <meta property='og:url' content="https://developers.bannerbear.com" />
+    <meta content="" property="og:image" />
+    <meta content="https://developers.bannerbear.com/images/og_image.png" name="twitter:image:src" />
+
 
     <style>
       <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
