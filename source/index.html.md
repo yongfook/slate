@@ -22,7 +22,9 @@ Bannerbear is a service that exposes banner designs as a simple API.
 
 1. Your designer designs a template in Bannerbear
 2. We turn it into an API
-3. You use this API to generate variations of this template design in JPG format
+3. You use this API to generate variations of the template in JPG format
+
+![](/images/api_example_2.jpg)
 
 # Authentication
 
