@@ -1,0 +1,20 @@
+body {
+	.toc-wrapper {
+		background-color: #FFD700;
+		border-right: 1px solid #000;
+		.toc-link, .toc-footer li a {
+			color: rgba(0,0,0,1);
+		}
+		.toc-list-h2 {
+			background: transparent !important;
+		}
+		.toc-list-h1 li {
+			// margin: 8px 0;
+		}
+	}
+	.toc-wrapper .toc-footer {
+		border: none;
+		position: fixed;
+		bottom: 0;
+	}
+}
