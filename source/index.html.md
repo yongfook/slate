@@ -34,7 +34,7 @@ Bannerbear is a service that exposes design templates as a simple JSON-based API
 
 ```shell
 curl "https://api.bannerbear/v2/auth"
-  -H "Authorization: API_KEY"
+  -H "Authorization: Bearer API_KEY"
 ```
 
 > Make sure to replace `API_KEY` with your API key.
@@ -43,7 +43,7 @@ Bannerbear uses API keys to allow access to the API. You can get an API key by [
 
 Bannerbear expects the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: API_KEY`
+`Authorization: Bearer API_KEY`
 
 <aside class="success">
 Replace <code>API_KEY</code> with your project API key.
@@ -57,7 +57,7 @@ Replace <code>API_KEY</code> with your project API key.
 
 ```shell
 curl "https://api.bannerbear/v2/images"
-  -H "Authorization: API_KEY"
+  -H "Authorization: Bearer API_KEY"
   -H "Content-Type: application/json" 
   -d json
 ```
@@ -125,7 +125,7 @@ As a recommended alternative to polling, you can define a webhook in `webhook_ur
 
 ```shell
 curl "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
-  -H "Authorization: API_KEY"
+  -H "Authorization: Bearer API_KEY"
 ```
 
 > The above endpoint returns JSON like this:
