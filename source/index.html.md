@@ -68,8 +68,9 @@ curl "https://api.bannerbear/v2/images"
 {
   "created_at": "2020-02-20T07:59:23.077Z",
   "status": "pending",
+  "self": "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj",
   "uid": "kG39R5XbvPQpLENKBWJj",
-  "self": "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
+  "image_url": null,
   "template": "6A37YJe5qNDmpvWKP0",
   "modifications": [
     {
@@ -81,8 +82,7 @@ curl "https://api.bannerbear/v2/images"
       "image_url": "https://www.bannerbear.com/assets/sample_avatar.jpg"
     }
   ],
-  "webhook_url": null,
-  "image_url": null
+  "webhook_url": null
 }
 ```
 
@@ -134,8 +134,9 @@ curl "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
 {
   "created_at": "2020-02-20T07:59:23.077Z",
   "status": "completed",
+  "self": "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj",
   "uid": "kG39R5XbvPQpLENKBWJj",
-  "self": "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
+  "image_url": "https://cdn.bannerbear.com/...",
   "template": "6A37YJe5qNDmpvWKP0",
   "modifications": [
     {
@@ -147,8 +148,7 @@ curl "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
       "image_url": "https://www.bannerbear.com/assets/sample_avatar.jpg"
     }
   ],
-  "webhook_url": null,
-  "image_url": "https://cdn.bannerbear.com/...",
+  "webhook_url": null
 }
 ```
 
