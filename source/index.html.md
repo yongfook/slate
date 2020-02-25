@@ -46,7 +46,7 @@ Bannerbear expects the API key to be included in all API requests to the server 
 `Authorization: Bearer API_KEY`
 
 <aside class="success">
-Replace <code>API_KEY</code> with your project API key.
+Replace <code>API_KEY</code> with your project API key
 </aside>
 
 # Images
@@ -108,16 +108,27 @@ name | string | The name of the item you want to change
 text | string | Replacement text you want to use
 image_url | string | Replacement image url you want to use (must be publicly viewable)
 
+### Status
+
 All images are created with the status `pending`.
 
-Images are usually rendered within a few seconds. 
+Images are usually rendered within a few seconds. When completed, the status changes to `completed`.
 
 You can poll the GET endpoint for status updates. The `self` attribute of the response provides this endpoint.
 
-### Using Webhooks
+### Webhooks
 
-As a recommended alternative to polling, you can define a webhook in `webhook_url` which Bannerbear will POST the Image object to after image rendering is complete. The rendered image url is found in the `image_url` attribute of the Image object.
+Instead of polling, we recommended you define a webhook in `webhook_url` which Bannerbear will POST the Image object to after image rendering is complete. The rendered image url is found in the `image_url` attribute of the Image object.
 
+To secure your webhook endpoint, Bannerbear will POST with the following header:
+
+`Authorization: Bearer WEBHOOK_KEY`
+
+<aside class="success">
+Replace <code>WEBHOOK_KEY</code> with your project's webhook key
+</aside>
+
+You can find your project's webhook key in its settings page.
 
 ## Get a Specific Image
 
