@@ -33,7 +33,7 @@ Bannerbear is a service that exposes design templates as a simple JSON-based API
 > To test your API key:
 
 ```shell
-curl "https://api.bannerbear/v2/auth"
+curl "https://api.bannerbear.com/v2/auth"
   -H "Authorization: Bearer API_KEY"
 ```
 
@@ -56,7 +56,7 @@ Replace <code>API_KEY</code> with your project API key
 > To create a request:
 
 ```shell
-curl "https://api.bannerbear/v2/images"
+curl "https://api.bannerbear.com/v2/images"
   -H "Authorization: Bearer API_KEY"
   -H "Content-Type: application/json" 
   -d json
@@ -68,7 +68,7 @@ curl "https://api.bannerbear/v2/images"
 {
   "created_at": "2020-02-20T07:59:23.077Z",
   "status": "pending",
-  "self": "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj",
+  "self": "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj",
   "uid": "kG39R5XbvPQpLENKBWJj",
   "image_url": null,
   "template": "6A37YJe5qNDmpvWKP0",
@@ -90,7 +90,7 @@ This endpoint creates a new image.
 
 ### HTTP Request
 
-`POST https://api.bannerbear/v2/images`
+`POST https://api.bannerbear.com/v2/images`
 
 ### Post Parameters
 
@@ -135,7 +135,7 @@ You can find your project's webhook key in its settings page.
 > To get an image:
 
 ```shell
-curl "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
+curl "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj"
   -H "Authorization: Bearer API_KEY"
 ```
 
@@ -145,7 +145,7 @@ curl "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj"
 {
   "created_at": "2020-02-20T07:59:23.077Z",
   "status": "completed",
-  "self": "https://api.bannerbear/v2/images/kG39R5XbvPQpLENKBWJj",
+  "self": "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj",
   "uid": "kG39R5XbvPQpLENKBWJj",
   "image_url": "https://cdn.bannerbear.com/...",
   "template": "6A37YJe5qNDmpvWKP0",
@@ -169,7 +169,7 @@ After creating an image request you will receive a uid. You can poll this endpoi
 
 ### HTTP Request
 
-`GET https://api.bannerbear/v2/requests/<uid>`
+`GET https://api.bannerbear.com/v2/requests/<uid>`
 
 ### Parameters
 
