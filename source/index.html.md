@@ -123,7 +123,7 @@ To secure your webhook endpoint, Bannerbear will POST with the following header:
 `Authorization: Bearer WEBHOOK_KEY`
 
 <aside class="success">
-Replace <code>WEBHOOK_KEY</code> with your project's webhook key
+Bannerbear will replace <code>WEBHOOK_KEY</code> with your project's webhook key
 </aside>
 
 You can find your project's webhook key in its settings page.
