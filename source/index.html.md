@@ -174,3 +174,114 @@ After creating an image request you will receive a uid. You can poll this endpoi
 Parameter | Description
 --------- | -----------
 uid | The uid of the request to retrieve
+
+
+# Templates
+
+## List Templates
+
+> To list a project's templates:
+
+```shell
+curl "https://api.bannerbear.com/v2/templates"
+  -H "Authorization: Bearer API_KEY"
+```
+
+> The above endpoint returns a JSON array like this:
+
+```json
+[
+  {
+    "created_at": "2020-03-17T01:58:07.358Z",
+    "name": "Twitter Demo",
+    "self": "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O",
+    "uid": "04PK8K2bctXHjqB97O",
+    "preview_url": null,
+    "width": 1000,
+    "height": 1000,
+    "available_modifications": [
+      {
+        "name": "avatar",
+        "image_url": null
+      },
+      {
+        "name": "name",
+        "text": null
+      },
+      {
+        "name": "handle",
+        "text": null
+      },
+      {
+        "name": "body",
+        "text": null
+      }
+    ]
+  }
+]
+```
+
+
+This endpoint lists a project's templates. 
+
+This endpoint may be useful for applications with many templates that need to show users a selection, before using the `Images` endpoint to generate an image based on a chosen template.
+
+### HTTP Request
+
+`GET https://api.bannerbear.com/v2/templates`
+
+### Template Preview
+
+Each time you edit a template in Bannerbear, a thumbnail is saved and made available in the `preview_url` attribute of the Template object.
+
+## Get a Specific Template
+
+> To get a template:
+
+```shell
+curl "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O"
+  -H "Authorization: Bearer API_KEY"
+```
+
+> The above endpoint returns JSON like this:
+
+```json
+{
+  "created_at": "2020-03-17T01:58:07.358Z",
+  "name": "Twitter Demo",
+  "self": "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O",
+  "uid": "04PK8K2bctXHjqB97O",
+  "preview_url": null,
+  "width": 1000,
+  "height": 1000,
+  "available_modifications": [
+    {
+      "name": "avatar",
+      "image_url": null
+    },
+    {
+      "name": "name",
+      "text": null
+    },
+    {
+      "name": "handle",
+      "text": null
+    },
+    {
+      "name": "body",
+      "text": null
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`GET https://api.bannerbear.com/v2/templates/<uid>`
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+uid | The uid of the template to retrieve
+
