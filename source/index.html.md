@@ -73,7 +73,9 @@ curl "https://api.bannerbear.com/v2/images"
   "modifications": [
     {
       "name": "title",
-      "text": "Lorem ipsum dolor sit amed"
+      "text": "Lorem ipsum dolor sit amed",
+      "color": null,
+      "background": null
     },
     {
       "name": "avatar",
@@ -104,7 +106,11 @@ Attribute | Type | Description
 --------- | ------- | -----------
 name | string | The name of the item you want to change
 text | string | Replacement text you want to use
+color | string | Color hex of object e.g. "#FF0000"
+background | string | Color hex of text background
 image_url | string | Replacement image url you want to use (must be publicly viewable)
+
+All attributes are optional, for example if you do not specify a color, the object's default color will be used. 
 
 ### Status
 
@@ -150,7 +156,9 @@ curl "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj"
   "modifications": [
     {
       "name": "title",
-      "text": "Lorem ipsum dolor sit amed"
+      "text": "Lorem ipsum dolor sit amed",
+      "color": null,
+      "background": null
     },
     {
       "name": "avatar",
