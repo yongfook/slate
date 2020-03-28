@@ -167,7 +167,7 @@ After creating an image request you will receive a uid. You can poll this endpoi
 
 ### HTTP Request
 
-`GET https://api.bannerbear.com/v2/requests/<uid>`
+`GET https://api.bannerbear.com/v2/images/<uid>`
 
 ### Parameters
 
