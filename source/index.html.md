@@ -82,7 +82,8 @@ curl "https://api.bannerbear.com/v2/images"
       "image_url": "https://www.bannerbear.com/assets/sample_avatar.jpg"
     }
   ],
-  "webhook_url": null
+  "webhook_url": null,
+  "webhook_response_code": null
 }
 ```
 
@@ -165,7 +166,8 @@ curl "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj"
       "image_url": "https://www.bannerbear.com/assets/sample_avatar.jpg"
     }
   ],
-  "webhook_url": null
+  "webhook_url": null,
+  "webhook_response_code": null
 }
 ```
 
