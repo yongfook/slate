@@ -200,37 +200,35 @@ curl "https://api.bannerbear.com/v2/templates"
 > The above endpoint returns a JSON array like this:
 
 ```json
-{
-  "templates" : [
-    {
-      "created_at": "2020-03-17T01:58:07.358Z",
-      "name": "Twitter Demo",
-      "self": "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O",
-      "uid": "04PK8K2bctXHjqB97O",
-      "preview_url": null,
-      "width": 1000,
-      "height": 1000,
-      "available_modifications": [
-        {
-          "name": "avatar",
-          "image_url": null
-        },
-        {
-          "name": "name",
-          "text": null
-        },
-        {
-          "name": "handle",
-          "text": null
-        },
-        {
-          "name": "body",
-          "text": null
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "created_at": "2020-03-17T01:58:07.358Z",
+    "name": "Twitter Demo",
+    "self": "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O",
+    "uid": "04PK8K2bctXHjqB97O",
+    "preview_url": null,
+    "width": 1000,
+    "height": 1000,
+    "available_modifications": [
+      {
+        "name": "avatar",
+        "image_url": null
+      },
+      {
+        "name": "name",
+        "text": null
+      },
+      {
+        "name": "handle",
+        "text": null
+      },
+      {
+        "name": "body",
+        "text": null
+      }
+    ]
+  } 
+]
 ```
 
 
