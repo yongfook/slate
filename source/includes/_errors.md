@@ -13,3 +13,5 @@ Error Code | Meaning
 429 | Too Many Requests -- Slow down!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+
+The Bannerbear API rate limit is 10 requests per 10 seconds.
