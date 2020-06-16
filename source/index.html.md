@@ -73,7 +73,6 @@ curl "https://api.bannerbear.com/v2/images"
   "self": "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj",
   "uid": "kG39R5XbvPQpLENKBWJj",
   "image_url": null,
-  "image_url_png": null,
   "template": "6A37YJe5qNDmpvWKP0",
   "modifications": [
     {
@@ -131,9 +130,15 @@ Images are usually rendered within a few seconds. When completed, the status cha
 
 You can poll the GET endpoint for status updates. The `self` property of the response provides this endpoint.
 
+### Image_url
+
+When `completed` the image url is found in the `image_url` property of the `Image` object. It will be in PNG format.
+
+*A legacy property named image_url_png also exists but you may ignore this as it is the same url as above. Bannerbear only generates PNGs and no other formats*
+
 ### Webhooks
 
-Instead of polling, we recommended you define a webhook in `webhook_url` which Bannerbear will POST the `Image` object to after image rendering is complete. The rendered image url is found in the `image_url` property of the `Image` object.
+Instead of polling, we recommended you define a webhook in `webhook_url` which Bannerbear will POST the `Image` object to after image rendering is complete.
 
 To secure your webhook endpoint, Bannerbear will POST with the following header:
 
@@ -144,6 +149,10 @@ Bannerbear will replace <code>WEBHOOK_KEY</code> with your project's webhook key
 </aside>
 
 You can find your project's webhook key in its settings page.
+
+###Hotlinking
+
+You may hotlink to `image_url` in your application.
 
 ## Get a Specific Image
 
@@ -163,7 +172,6 @@ curl "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj"
   "self": "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj",
   "uid": "kG39R5XbvPQpLENKBWJj",
   "image_url": "https://cdn.bannerbear.com/...",
-  "image_url_png": "https://cdn.bannerbear.com/...",
   "template": "6A37YJe5qNDmpvWKP0",
   "modifications": [
     {
@@ -391,7 +399,6 @@ curl "https://api.bannerbear.com/v2/crawls/W7ErAeVjZAb6G1MpNQ"
     "self": "https://api.bannerbear.com/v2/images/yMRj52Zwoa6xZ5YxWkdO3eE9P",
     "uid": "yMRj52Zwoa6xZ5YxWkdO3eE9P",
     "image_url": "https://cdn.bannerbear.com/...",
-    "image_url_png": "https://cdn.bannerbear.com/...",
     "template": "p6jq8BX57gY5nlwWaK",
     "modifications": [
       {
