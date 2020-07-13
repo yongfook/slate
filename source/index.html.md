@@ -88,6 +88,7 @@ curl "https://api.bannerbear.com/v2/images"
   ],
   "webhook_url": null,
   "webhook_response_code": null,
+  "transparent": false,
   "metadata": null
 }
 ```
@@ -107,6 +108,7 @@ Parameter | Type | Description
 template | string | The template uid you want to use
 modifications | array | A list of Modifications you want to make
 webhook_url<br /><span class="tag">optional</span> | string | A url to POST the `Image` object to upon rendering completed
+transparent<br /><span class="tag">optional</span> | boolean | Render a PNG with a transparent background. Defaults to `false` (white backround).
 metadata<br /><span class="tag">optional</span> | string | Metadata that you need to store e.g. ID of a record in your DB
 
 
@@ -187,6 +189,7 @@ curl "https://api.bannerbear.com/v2/images/kG39R5XbvPQpLENKBWJj"
   ],
   "webhook_url": null,
   "webhook_response_code": null,
+  "transparent": false,
   "metadata": null
 }
 ```
