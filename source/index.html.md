@@ -22,7 +22,7 @@ Bannerbear is a service that exposes design templates as a simple JSON-based API
 
 1. Your designer designs a template in Bannerbear
 2. We turn it into an API
-3. You use this API to generate variations of the template in PNG and JPG format
+3. You use this API to generate variations of the template in PNG format
 
 ![](/images/api_example_2.jpg)
 
@@ -136,7 +136,7 @@ You can poll the GET endpoint for status updates. The `self` property of the res
 
 When `completed` the image url is found in the `image_url` property of the `Image` object. It will be in PNG format.
 
-*A legacy property named image_url_png also exists but you may ignore this as it is the same url as above. Bannerbear only generates PNGs and no other formats*
+*A legacy property named image_url_png also exists but you may ignore this as it is the same url as above.*
 
 ### Webhooks
 
@@ -318,6 +318,126 @@ curl "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O"
 Parameter | Description
 --------- | -----------
 uid | The uid of the template to retrieve
+
+
+# Collections
+
+Sometimes you want to use the same data payload but push to multiple templates at once. In Bannerbear, you can do this by grouping templates together in a Template Set. Pushing data to a Template Set results in a response that includes multiple images (depending on how many templates were in your set). 
+
+This multi-image object is known as a `Collection`.
+
+## Create a Collection
+
+> To create a collection:
+
+```shell
+curl "https://api.bannerbear.com/v2/collections"
+  -H "Authorization: Bearer API_KEY"
+  -H "Content-Type: application/json" 
+  -d json
+```
+
+> The above endpoint returns JSON like this:
+
+```json
+{
+  "created_at": "2020-07-31 04:28:32 UTC",
+  "uid": "rZdpMYmAnDB1zb3kXL",
+  "self": "https://api.bannerbear.com/v2/collections/rZdpMYmAnDB1zb3kXL",
+  "template_set": "Dbl5xYVgKRzLwaNdqo",
+  "status": "completed",
+  "modifications": [
+    {
+      "name": "text_container",
+      "text": "Hello World"
+    }
+  ],
+  "webhook_url": null,
+  "webhook_response_code": null,
+  "image_urls": {
+    "template_EagXkA3DwM1ZW2VBYw_image_url": "https://cdn.bannerbear.com/...",
+    "template_197xPQmDnLqZG3E82Y_image_url": "https://cdn.bannerbear.com/..."
+  },
+  "images": [
+    //array of Image objects
+  ]
+}
+```
+
+This endpoint creates a new `Collection`.
+
+### HTTP Request
+
+`POST https://api.bannerbear.com/v2/collections`
+
+### Post Parameters
+
+Send as a JSON object
+
+Parameter | Type | Description
+--------- | ------- | -----------
+template_set | string | The template set uid you want to use
+modifications | array | A list of Modifications you want to make
+webhook_url<br /><span class="tag">optional</span> | string | A url to POST the `Collection` object to upon rendering completed
+
+For more information on the modifications parameter, see the `Images` endpoint.
+
+### Status
+
+All collections are created with the status `pending`.
+
+Collections are usually rendered within a few seconds. When completed, the status changes to `completed`.
+
+You can poll the GET endpoint for status updates. The `self` property of the response provides this endpoint. Alternatively you can provide a webhook to get notified when generation is completed.
+
+
+
+## Get a Specific Collection
+
+> To get a collection:
+
+```shell
+curl "https://api.bannerbear.com/v2/collections/rZdpMYmAnDB1zb3kXL"
+  -H "Authorization: Bearer API_KEY"
+```
+
+> The above endpoint returns JSON like this:
+
+```json
+{
+  "created_at": "2020-07-31 04:28:32 UTC",
+  "uid": "rZdpMYmAnDB1zb3kXL",
+  "self": "https://api.bannerbear.com/v2/collections/rZdpMYmAnDB1zb3kXL",
+  "template_set": "Dbl5xYVgKRzLwaNdqo",
+  "status": "completed",
+  "modifications": [
+    {
+      "name": "text_container",
+      "text": "Hello World"
+    }
+  ],
+  "webhook_url": null,
+  "webhook_response_code": null,
+  "image_urls": {
+    "template_EagXkA3DwM1ZW2VBYw_image_url": "https://cdn.bannerbear.com/...",
+    "template_197xPQmDnLqZG3E82Y_image_url": "https://cdn.bannerbear.com/..."
+  },
+  "images": [
+    //array of Image objects
+  ]
+}
+```
+
+### HTTP Request
+
+`GET https://api.bannerbear.com/v2/collections/<uid>`
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+uid | The uid of the collection to retrieve
+
 
 # Crawls
 
