@@ -111,8 +111,31 @@ webhook_url<br /><span class="tag">optional</span> | string | A url to POST the 
 transparent<br /><span class="tag">optional</span> | boolean | Render a PNG with a transparent background. Defaults to `false` (white backround).
 metadata<br /><span class="tag">optional</span> | string | Metadata that you need to store e.g. ID of a record in your DB
 
+You can view a sample API payload for any template in the Bannerbear API Console.
 
-### Modification Object
+
+## Modifications Array
+
+> Example modifications:
+
+```json
+{
+  "modifications": [
+    {
+      "name": "title",
+      "text": "Lorem ipsum dolor sit amed"
+    },
+    {
+      "name": "avatar",
+      "image_url": "https://www.bannerbear.com/assets/sample_avatar.jpg"
+    }
+  ]
+}
+```
+
+Your `Image` API payload should contain a parameter named `modifications` which is an array of modifications you would like to apply to a template.
+
+All properties are optional, for example if you do not specify a color, the object's default color will be used. 
 
 Property | Type | Description
 --------- | ------- | -----------
@@ -121,10 +144,15 @@ text | string | Replacement text you want to use
 color | string | Color hex of object e.g. "#FF0000"
 background | string | Color hex of text background
 image_url | string | Replacement image url you want to use (must be publicly viewable)
+fit | boolean | When set to `true` will resize up text to fit the `max height` of the text box.<br /><span class="tag">experimental</span>
 
-All properties are optional, for example if you do not specify a color, the object's default color will be used. 
+### Text Autoresizing
 
-### Status
+To use text autoresizing, set a `max height` for text boxes in the template editor. When this is set, text that overflows the `max height` will be *autoresized down*.
+
+For scenarios where you want text to always fill a `max height` text box (scaling up if text is too small and scaling down if text is too large) pass `fit: true` when making the API request.
+
+## Image Response
 
 All images are created with the status `pending`.
 
