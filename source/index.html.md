@@ -53,6 +53,18 @@ The `Images` resource is the main resource in Bannerbear. Everything you can do 
 
 The `Image` object represents an image you have requested to generate. You generate images by sending a `POST` request to Bannerbear with a template uid and a list of template modifications you want to apply.
 
+## List Images
+
+You can get a list of the latest images in this project any time by issuing a `GET` request to the `/images` endpoint. This will respond with an array of `Image` objects.
+
+> To list newest images:
+
+```shell
+curl "https://api.bannerbear.com/v2/images"
+  -H "Authorization: Bearer API_KEY"
+```
+
+
 ## Create an Image
 
 > To create an image:
@@ -346,6 +358,30 @@ curl "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O"
 Parameter | Description
 --------- | -----------
 uid | The uid of the template to retrieve
+
+## Airtable Import
+
+> To get a template:
+
+```shell
+curl -X POST "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O/airtable"
+  -H "Authorization: Bearer API_KEY"
+
+```
+
+> The above endpoint returns JSON like this:
+
+```json
+{
+    "message": "Airtable import has started"
+}
+```
+
+If you have an airtable connected to a template you can initiate an airtable import by issuing a `POST` request to this endpoint.
+
+This endpoint responds with simple success or failure message. `Images` are not returned by this endpoint.
+
+To see new `Images` as they are imported from Airtable you can watch the [List Images](#list-images) endpoint which lists all new images.
 
 
 # Collections
