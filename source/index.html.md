@@ -361,7 +361,7 @@ uid | The uid of the template to retrieve
 
 ## Airtable Import
 
-> To get a template:
+> To start an import:
 
 ```shell
 curl -X POST "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O/airtable"
