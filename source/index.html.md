@@ -156,13 +156,9 @@ text | string | Replacement text you want to use
 color | string | Color hex of object e.g. "#FF0000"
 background | string | Color hex of text background
 image_url | string | Replacement image url you want to use (must be publicly viewable)
-fit | boolean | When set to `true` will resize up text to fit the `max height` of the text box.<br /><span class="tag">experimental</span>
-
-### Text Autoresizing
-
-To use text autoresizing, set a `max height` for text boxes in the template editor. When this is set, text that overflows the `max height` will be *autoresized down*.
-
-For scenarios where you want text to always fill a `max height` text box (scaling up if text is too small and scaling down if text is too large) pass `fit: true` when making the API request.
+chart_data | string | A comma-delimited list of numbers to send to a Bar Chart object
+rating | integer | A number from 0 to 100 to send to a Star Rating object
+hide | boolean | Set to `true` to hide an object
 
 ## Image Response
 
@@ -376,6 +372,18 @@ curl -X POST "https://api.bannerbear.com/v2/templates/04PK8K2bctXHjqB97O/airtabl
     "message": "Airtable import has started"
 }
 ```
+
+This endpoint initiates an Airtable Import.
+
+### HTTP Request
+
+`POST https://api.bannerbear.com/v2/templates/<uid>/airtable`
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+uid | The uid of the template to initiate Airtable Import on
 
 If you have an airtable connected to a template you can initiate an airtable import by issuing a `POST` request to this endpoint.
 
